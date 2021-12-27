@@ -1,8 +1,16 @@
-{% extends '../base.html' %} {% block content %} 
+{% extends '../base.html' %} {% block content %} {%load static %}
 
+<div class="d-flex flex-wrap mt-3">
+  {% for carMaker, img in carMakers.items %}
 
-hello world 
+  <div class="m-1 mb-3 col-12 col-md">
+    <img src="{% static img %}" class="w-100 h-100" alt="loading error" />
+    <div class="d-flex justify-content-center">
+      <a href="{% url 'modelList' carMaker %}" class="text-center">{{ carMaker }}</a>
+    </div>
+  </div>
 
-
+  {% endfor %}
+</div>
 
 {% endblock content %}
