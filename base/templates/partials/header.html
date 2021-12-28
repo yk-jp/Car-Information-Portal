@@ -1,44 +1,51 @@
-<div class="d-flex justify-content-center flex-wrap">
-  <div class="m-2">
-    <select id="carMake" class="custom-select">
-      <option selected>CAR MAKE</option>
-      {% for carMaker in carMakers %} {% if make and make == carMaker %}
-      <option value="{{ carMaker }}" selected>{{ carMaker }}</option>
-      {% else %}
-      <option value="{{ carMaker }}">{{ carMaker }}</option>
-      {% endif %} {% endfor %}
-    </select>
-  </div>
-  <div class="m-2">
-    <select id="carModel" class="custom-select">
-      <option selected>CAR MODEL</option>
-      {% if models %} {% for model in models %}
-      <option value="{{model.model_name}}">{{model.model_name}}</option>
-      {% endfor %} {% endif %}
-    </select>
-  </div>
-  <div class="m-2">
-    <select class="custom-select">
-      <option selected>BEGIN YEAR</option>
-      {% for year in years %}
-      <option value="{{year}}">{{year}}</option>
-      {% endfor %}
-    </select>
-  </div>
-  <div class="m-2">
-    <select class="custom-select">
-      <option selected>END YEAR</option>
-      {% for year in years %}
-      <option value="{{year}}">{{year}}</option>
-      {% endfor %}
-    </select>
-  </div>
-
-  <div class="m-2">
-    <input
-      class="btn text-white bg-purple border-purple"
-      type="submit"
-      value="Submit"
-    />
-  </div>
+<div id="title" class="d-flex justify-content-center mt-3">
+  <a href="{% url 'index' %}" class="text-dark">GERMAN CAR WAREHOUSE</a>
 </div>
+
+<form action="" method="post">
+  {% csrf_token %}
+  <div class="d-flex justify-content-center flex-wrap">
+    <div class="m-2">
+      <select id="carMake" class="custom-select">
+        <option selected>CAR MAKE</option>
+        {% for carMaker in carMakers %} {% if make and make == carMaker %}
+        <option value="{{ carMaker }}" selected>{{ carMaker }}</option>
+        {% else %}
+        <option value="{{ carMaker }}">{{ carMaker }}</option>
+        {% endif %} {% endfor %}
+      </select>
+    </div>
+    <div class="m-2">
+      <select id="carModel" class="custom-select">
+        <option selected>CAR MODEL</option>
+        {% if models %} {% for model in models %}
+        <option value="{{model}}">{{model}}</option>
+        {% endfor %} {% endif %}
+      </select>
+    </div>
+    <div class="m-2">
+      <select class="custom-select">
+        <option selected>BEGIN YEAR</option>
+        {% for year in years %}
+        <option value="{{year}}">{{year}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="m-2">
+      <select class="custom-select">
+        <option selected>END YEAR</option>
+        {% for year in years %}
+        <option value="{{year}}">{{year}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="m-2">
+      <input
+        class="btn text-white bg-purple border-purple"
+        type="submit"
+        value="Submit"
+      />
+    </div>
+  </div>
+</form>
