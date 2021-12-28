@@ -1,17 +1,18 @@
 {% extends '../base.html' %} {% block content %} {%load static %}
 
 <div class="d-flex justify-content-center flex-column my-2">
-
-   <div class="m-1 mb-3 col-12 col-md">
-    <img src="{% static img %}" class="w-100 h-100" alt="loading error" />
+  <div class="m-1 mb-3 col-12 col-md">
     <div class="d-flex justify-content-center">
-      <h6 class="text-center">{{ make }}</h6>
+      <img src="{% static img%}" class="w-25 h-25" alt="loading error" />
+    </div>
+    <div class="d-flex justify-content-center">
+      <h3 class="text-center">{{ make }}</h3>
     </div>
   </div>
 
   {% for model in models %}
   <div class="d-flex justify-content-center">
-    <a href="" class="text-center my-3">{{model.model_name}}</a>
+    <a href="" class="text-center my-3">{{model}}</a>
   </div>
 
   {% endfor %}

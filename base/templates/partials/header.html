@@ -2,17 +2,19 @@
   <div class="m-2">
     <select id="carMake" class="custom-select">
       <option selected>CAR MAKE</option>
-      {% for carMaker in carMakers %}
+      {% for carMaker in carMakers %} {% if make and make == carMaker %}
+      <option value="{{ carMaker }}" selected>{{ carMaker }}</option>
+      {% else %}
       <option value="{{ carMaker }}">{{ carMaker }}</option>
-      {% endfor %}
+      {% endif %} {% endfor %}
     </select>
   </div>
   <div class="m-2">
     <select id="carModel" class="custom-select">
       <option selected>CAR MODEL</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+      {% if models %} {% for model in models %}
+      <option value="{{model.model_name}}">{{model.model_name}}</option>
+      {% endfor %} {% endif %}
     </select>
   </div>
   <div class="m-2">

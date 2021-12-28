@@ -11,14 +11,11 @@ from .methods.methods import RestCarQueryAPI
 
 todays_date = date.today() #today's date
 
-
 # Create your views here.
 def index(request):
 
     carNakers = config.get('GermanCarMaker') 
-    # req = RestCarQueryAPI.getModels()
 
-    # print(req.status_code)
     context = {
         'carMakers':carNakers,
         'years':range(1886,todays_date.year + 1)
@@ -26,15 +23,28 @@ def index(request):
     return render(request,'pages/index.html',context)
 
 def modelList(request,make):
-    carNakers = config.get('GermanCarMaker') 
+    carMakers = config.get('GermanCarMaker') 
+    img = carMakers[make]
+
     if request.method == 'GET':
         req = RestCarQueryAPI.getModels(make)
-        models = json.loads(req.text[2:-2]).get('Models')
+        modelsData = json.loads(req.text[2:-2]).get('Trims')
+
+        models = []
+
+        for model in modelsData:
+            if model['model_name'] not in models: models.append(model['model_name'])
+
         context = {
-            'carMakers':carNakers,
+            'carMakers':carMakers,
             'make':make,
-            'models':models
+            'models':models,
+            'img':img,
+            'years':range(1886,todays_date.year + 1)
         }
         return render(request,'pages/modelList.html',context)
+    
+    # elif request.method =='POST':
+    #     print('')
 
-    return render(request,'pages/modelList.html',{'carMakers':carNakers})
+    return render(request,'pages/modelList.html',{'carMakers':carMakers})
