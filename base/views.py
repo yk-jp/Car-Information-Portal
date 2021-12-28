@@ -44,7 +44,14 @@ def modelList(request,make):
         }
         return render(request,'pages/modelList.html',context)
     
-    # elif request.method =='POST':
-    #     print('')
+    elif request.method =='POST':
+        print(request.POST)
+        context = {
+            'carMakers':carMakers,
+            'img':img,
+            'years':range(1886,todays_date.year + 1)
+        }
+        return render(request,'pages/modelList.html',context)
+    
 
     return render(request,'pages/modelList.html',{'carMakers':carMakers})

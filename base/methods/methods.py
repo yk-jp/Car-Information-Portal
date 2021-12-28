@@ -7,7 +7,7 @@ class RestCarQueryAPI():
     Headers = {'User-Agent': 'Mozilla/5.0'}
 
     def getModels(make=None,min_year=date.today().year,max_year=date.today().year) -> str:
-        url = 'https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&model'
+        url = RestCarQueryAPI.baseUrl + '&cmd=getTrims&model'
         if(make):
             url += '&make=' + make
         url += '&{min_year}&{max_year}'
