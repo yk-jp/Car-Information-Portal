@@ -3,19 +3,33 @@
 <div class="d-flex justify-content-center flex-column my-2">
   <div class="m-1 mb-3 col-12 col-md">
     <div class="d-flex justify-content-center">
+      {% if img %}
       <img src="{% static img%}" class="w-25 h-25" alt="loading error" />
+      {% endif %}
     </div>
     <div class="d-flex justify-content-center">
       <h3 class="text-center">{{ make }}</h3>
     </div>
   </div>
 
-  {% for model in models %}
   <div class="d-flex justify-content-center">
-    <a href="" class="text-center my-3">{{model}}</a>
+    <table class="table table-striped w-50">
+      <tr>
+      {% for title in modelDetailTitles %}
+        <th class="text-center">{{title}}</th>
+      {% endfor %}
+    </tr>
+  {% for detail in modelDetails %}
+      <tr>
+        <td class="text-center">{{detail.model_year}}</td>
+        <td class="text-center">{{detail.model_name}}</td>
+        <td class="text-center">{{detail.model_engine_power_ps}}</td>
+      </tr>
+      {% endfor %}
   </div>
+ 
 
-  {% endfor %}
+</table>
 </div>
 
 {% endblock content %}
