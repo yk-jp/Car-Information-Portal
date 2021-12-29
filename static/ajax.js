@@ -15,10 +15,11 @@ document.getElementById('carMake').addEventListener('change', (e) => {
             })
 
             const carModelEle = document.getElementById('carModel');
-            carModelEle.innerHTML = ` <option selected>CAR MODEL</option>`;
+            carModelEle.innerHTML = '';
+            carModelEle.innerHTML = `<option selected value="">CAR MODEL</option>`;
 
             models.forEach((model) => {
-                carModelEle.innerHTML += ` <option value="${model}">${model}</option>`;
+                carModelEle.innerHTML += `<option value="${model}">${model}</option>`;
             });
         },
         error: function(error) {

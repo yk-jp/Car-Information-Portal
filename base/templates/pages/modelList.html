@@ -12,7 +12,7 @@
 
   {% for model in models %}
   <div class="d-flex justify-content-center">
-    <a href="" class="text-center my-3">{{model}}</a>
+    <a href="{% url 'modelDetails' make model %}" class="text-center my-3">{{model}}</a>
   </div>
 
   {% endfor %}
